@@ -1,9 +1,9 @@
 import { Pressable, View, Text, StyleSheet } from "react-native";
 
-const CategoryTile = ({ children, color }) => {
+const CategoryTile = ({ children, color, onPress }) => {
   return (
     <View style={[styles.gridItem, { backgroundColor: color }]}>
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={onPress}>
         <View style={styles.innerContainer}>
           <Text style={styles.title}>{children}</Text>
         </View>
