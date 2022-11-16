@@ -1,8 +1,8 @@
-import { Image, Pressable, Text, View, StyleSheet } from "react-native";
+import { Image, Pressable, Text, StyleSheet } from "react-native";
 
-const MealItem = ({ title, imageUrl }) => {
+const MealItem = ({ title, imageUrl, onPress }) => {
   return (
-    <Pressable style={styles.button}>
+    <Pressable style={styles.button} onPress={onPress}>
       <Image source={{ uri: imageUrl }} style={styles.image} />
       <Text style={styles.title}>{title}</Text>
     </Pressable>
