@@ -8,6 +8,7 @@ import Categories from "./screens/Categories";
 import Meals from "./screens/Meals";
 import MealDetails from "./screens/MealDetails";
 import Favorites from "./screens/Favorites";
+import FavoritesProvider from "./store/context/Favorites";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -44,39 +45,41 @@ export default function App() {
   );
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: { backgroundColor: "#f89393" },
-          headerTintColor: "white",
-        }}
-      >
-        <Stack.Screen
-          name="Categories"
-          component={DrawerNavigator}
-          options={{
-            headerShown: false,
+    <FavoritesProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: "#f89393" },
+            headerTintColor: "white",
           }}
-        />
-        <Stack.Screen
-          name="Meals"
-          component={Meals}
-          // alternative to dynamically set the title
-          // options={({ route, navigation }) => {
-          //   const { categoryId } = route.params;
-          //   return {
-          //     title: categoryId,
-          //   };
-          // }}
-        />
-        <Stack.Screen
-          name="MealDetails"
-          component={MealDetails}
-          // options={{
-          //   headerRight: () => {//jsx...}
-          // }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+        >
+          <Stack.Screen
+            name="Categories"
+            component={DrawerNavigator}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Meals"
+            component={Meals}
+            // alternative to dynamically set the title
+            // options={({ route, navigation }) => {
+            //   const { categoryId } = route.params;
+            //   return {
+            //     title: categoryId,
+            //   };
+            // }}
+          />
+          <Stack.Screen
+            name="MealDetails"
+            component={MealDetails}
+            // options={{
+            //   headerRight: () => {//jsx...}
+            // }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </FavoritesProvider>
   );
 }
