@@ -1,12 +1,11 @@
 import { View, FlatList, Text } from "react-native";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 import { MEALS } from "../../data/dummy";
-import { FavoritesContext } from "../../store/context/Favorites";
 import MealItem from "../../components/MealItem";
 
 const Favorites = ({ navigation }) => {
-  const { favoriteIds } = useContext(FavoritesContext);
+  const { favoriteIds } = useSelector((state) => state.favorites);
   const displayMeals = MEALS.filter((meal) => favoriteIds.includes(meal.id));
   const handlePress = (mealId) => {
     navigation.navigate("MealDetails", { mealId });
